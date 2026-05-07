@@ -162,15 +162,20 @@ function closeLightbox() {
 }
 
 /* --- CMS Logic --- */
-function initCMS() {
-    // --- Member News CMS ---
-    const NEWS_KEY = 'envibes_member_news_v2';
-    const defaultNews = `
-<div class="news-item"><i class="fas fa-cake-candles"></i> <span><strong>생일 축하해요!</strong> 5월에는 OOO님의 생일이 있습니다.</span></div>
-<div class="news-item"><i class="fas fa-ring"></i> <span><strong>결혼 소식!</strong> 5/31 기업발전그룹 Lara의 결혼을 축하해주세요! 🎉</span></div>
-<div class="news-item"><i class="fas fa-baby-carriage"></i> <span><strong>출산 소식!</strong> 품질관리그룹 Leo의 둘째 출산을 축하해주세요! 🎉</span></div>
-    `.trim();
+async function initCMS() {
+    // --- Global Data Fetch (Sync) ---
+    let globalData = null;
+    try {
+        const response = await fetch('data.json?t=' + Date.now());
+        globalData = await response.json();
+    } catch (e) {
+        console.error('Failed to fetch global data', e);
+    }
 
+    // --- Member News CMS ---
+    const NEWS_KEY = 'envibes_member_news_v3';
+    const defaultNewsHTML = globalData ? globalData.memberNews.map(n => `<div class="news-item"><i class="fas fa-bullhorn"></i> <span>${n}</span></div>`).join('') : '';
+    
     const newsDisplay = document.getElementById('news-display');
     const newsEditorContainer = document.getElementById('news-editor-container');
     const newsTextarea = document.getElementById('news-editor');
@@ -179,13 +184,47 @@ function initCMS() {
     const saveNewsBtn = document.getElementById('save-news-btn');
     const cancelNewsBtn = document.getElementById('cancel-news-btn');
 
+    function renderBirthdayNews() {
+        if (!globalData || !globalData.birthdays) return '';
+        
+        const now = new Date();
+        const currentMonth = now.getMonth() + 1; // 1-12
+        
+        // 2026 Lunar to Solar Mapping for the list
+        const lunarMap2026 = {
+            "01.01": "02.17", "01.02": "02.18", "02.12": "03.30", 
+            "02.13": "03.31", "03.05": "04.21", "04.28": "06.13", "07.12": "08.24"
+        };
+
+        const bdayPeople = globalData.birthdays.filter(p => {
+            let month = parseInt(p.date.split('.')[0]);
+            if (p.type === '-') {
+                const solarDate = lunarMap2026[p.date];
+                if (solarDate) month = parseInt(solarDate.split('.')[0]);
+            }
+            return month === currentMonth;
+        });
+
+        if (bdayPeople.length === 0) return '';
+
+        const names = bdayPeople.map(p => p.name).join(', ');
+        return `
+            <div class="news-item birthday-special">
+                <i class="fas fa-cake-candles"></i> 
+                <span><strong>${currentMonth}월 생일 축하합니다!</strong> ${names} 님</span>
+            </div>
+        `;
+    }
+
     function loadNews() {
+        const bdayHTML = renderBirthdayNews();
         const savedData = localStorage.getItem(NEWS_KEY);
+        
         if (savedData) {
-            newsDisplay.innerHTML = savedData;
+            newsDisplay.innerHTML = bdayHTML + savedData;
         } else {
-            newsDisplay.innerHTML = defaultNews;
-            localStorage.setItem(NEWS_KEY, defaultNews);
+            newsDisplay.innerHTML = bdayHTML + defaultNewsHTML;
+            localStorage.setItem(NEWS_KEY, defaultNewsHTML);
         }
     }
 

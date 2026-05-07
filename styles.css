@@ -302,6 +302,27 @@ a {
     margin-top: 4px;
 }
 
+.news-item.birthday-special {
+    background: linear-gradient(90deg, rgba(255, 143, 0, 0.1), rgba(255, 179, 0, 0.1));
+    border: 1px solid rgba(255, 179, 0, 0.3);
+    color: #FFB300;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px !important;
+}
+
+.news-item.birthday-special i {
+    color: #FF8F00 !important;
+    animation: bday-bounce 2s infinite;
+}
+
+@keyframes bday-bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-5px);}
+    60% {transform: translateY(-3px);}
+}
+
+
 .hidden { display: none !important; }
 
 .news-editor-container {

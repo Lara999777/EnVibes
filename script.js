@@ -164,7 +164,7 @@ function closeLightbox() {
 /* --- CMS Logic --- */
 function initCMS() {
     // --- Member News CMS ---
-    const NEWS_KEY = 'envibes_member_news';
+    const NEWS_KEY = 'envibes_member_news_v2';
     const defaultNews = `
 <div class="news-item"><i class="fas fa-cake-candles"></i> <span><strong>생일 축하해요!</strong> 5월에는 OOO님의 생일이 있습니다.</span></div>
 <div class="news-item"><i class="fas fa-ring"></i> <span><strong>결혼 소식!</strong> 5/31 기업발전그룹 Lara의 결혼을 축하해주세요! 🎉</span></div>

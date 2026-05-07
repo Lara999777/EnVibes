@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnVibes — 앤비젼 조직문화 라운지</title>
+    <meta name="description" content="Envision + Vibes: 앤비젼만의 분위기와 문화를 즐길 수 있는 라운지">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="hero-header">
+            <div class="logo-group">
+                <img src="envision_logo_white_200px_2015.png" alt="ENVISION" class="brand-logo" onerror="this.src='envision_logo_200px_2015.png'">
+            </div>
+            <h1 class="hero-title">EnVibes <span class="highlight">라운지</span></h1>
+            <p class="hero-subtitle">
+                <strong>Envision + Vibes</strong><br>
+                앤비젼만의 분위기와 문화를 즐기고, 우리의 이야기를 함께 나누는 공간입니다.
+            </p>
+        </header>
+
+        <!-- Bento Grid Layout -->
+        <main class="bento-grid">
+            
+            <!-- Category 1: Newsletter -->
+            <a href="../newsletter/index.html" class="bento-card col-span-2 row-span-2 card-newsletter">
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-newspaper"></i></div>
+                    <h2>앤가네 분식</h2>
+                    <p>앤비젼 사내 뉴스레터 아카이브<br>우리의 이야기와 소식을 만나보세요.</p>
+                </div>
+            </a>
+
+            <!-- Category 3: Member News (CMS) -->
+            <div class="bento-card col-span-2 row-span-2 card-news">
+                <div class="card-header-flex">
+                    <div class="card-icon"><i class="fas fa-cake-candles"></i></div>
+                    <button class="btn-icon" id="edit-news-btn" title="소식 편집하기"><i class="fas fa-pen"></i></button>
+                </div>
+                <h2>구성원 소식</h2>
+                <div class="news-content-wrapper">
+                    <!-- Display Mode -->
+                    <div id="news-display" class="news-display">
+                        <div class="news-item"><i class="fas fa-gift"></i> <span>로딩중...</span></div>
+                    </div>
+                    <!-- Edit Mode -->
+                    <div id="news-editor-container" class="news-editor-container hidden">
+                        <textarea id="news-editor" placeholder="구성원 소식을 입력하세요 (HTML 태그 사용 가능)"></textarea>
+                        <div class="editor-actions">
+                            <button id="save-news-btn" class="btn-primary">저장</button>
+                            <button id="cancel-news-btn" class="btn-secondary">취소</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2: EOC (Swapped with ESG) -->
+            <a href="https://lara999777.github.io/EOC/" target="_blank" class="bento-card col-span-2 card-eoc">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-address-book"></i></div>
+                    <h2>제품별 담당자</h2>
+                    <p>고객/제품별 담당자 바로찾기</p>
+                </div>
+                <div class="hover-external"><i class="fas fa-external-link-alt"></i></div>
+            </a>
+
+            <!-- Category 6: Event Gallery -->
+            <div class="bento-card col-span-2 card-gallery" onclick="openModal('gallery-modal')">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-images"></i></div>
+                    <h2>주요행사 갤러리</h2>
+                    <p>창립기념일 & Year End Party</p>
+                </div>
+                <div class="hover-arrow"><i class="fas fa-arrow-right"></i></div>
+            </div>
+
+            <!-- Category 4: ESG Campaign (Swapped with EOC) -->
+            <div class="bento-card row-span-2 card-esg" onclick="openModal('esg-modal')">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-leaf"></i></div>
+                    <h2>사내 ESG 캠페인</h2>
+                    <p>환경보호 및 사회공헌 활동</p>
+                </div>
+                <div class="hover-arrow"><i class="fas fa-arrow-right"></i></div>
+            </div>
+
+            <!-- Category 5: Other Info (Clubs) -->
+            <div class="bento-card col-span-3 row-span-2 card-clubs">
+                <div class="card-content">
+                    <div class="card-header-flex" style="margin-bottom: 10px;">
+                        <div>
+                            <div class="card-icon"><i class="fas fa-users"></i></div>
+                            <h2>사내 동호회</h2>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px; font-size: 0.95rem; color: var(--text-secondary);">
+                        기타 사내 규정 및 지침은 <a href="https://teams.microsoft.com/l/app/5d7a6745-4638-4dd2-a20d-8a3ac456e869?source=app-header-share-entrypoint" target="_blank" style="color: var(--accent-secondary); text-decoration: underline; font-weight: 500;">그룹웨어-게시판</a>을 통해서 확인해주세요.
+                    </div>
+                    
+                    <div class="clubs-section" style="margin-top: 1rem;">
+                        <div class="card-header-flex" style="margin-bottom: 0.5rem; align-items: center;">
+                            <h3 style="font-size: 1.1rem; color: var(--text-primary);">진행 중인 사내 동호회</h3>
+                            <button class="btn-icon" id="edit-clubs-btn" title="동호회 편집하기"><i class="fas fa-pen"></i></button>
+                        </div>
+                        <p class="clubs-note" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                            ※ 각 동호회별 가입 및 활동 참여 문의는 담당 회장에게 문의해 주세요.
+                        </p>
+                        
+                        <!-- Display Mode -->
+                        <div id="clubs-display" class="club-chips">
+                            <span class="chip"><i class="fas fa-spinner fa-spin"></i> 로딩중...</span>
+                        </div>
+                        
+                        <!-- Edit Mode -->
+                        <div id="clubs-editor-container" class="news-editor-container hidden" style="margin-top: 1rem;">
+                            <textarea id="clubs-editor" placeholder="동호회 칩 HTML을 입력하세요" style="min-height: 120px;"></textarea>
+                            <div class="editor-actions">
+                                <button id="save-clubs-btn" class="btn-primary">저장</button>
+                                <button id="cancel-clubs-btn" class="btn-secondary">취소</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <!-- Modal: ESG Campaign -->
+    <div id="esg-modal" class="modal">
+        <div class="modal-content glass-panel">
+            <button class="close-modal" onclick="closeModal('esg-modal')"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <h2><i class="fas fa-leaf"></i> 사내 ESG 캠페인</h2>
+            </div>
+            <div class="modal-body">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab('esg', 'env')">E: 환경보호</button>
+                    <button class="tab-btn" onclick="switchTab('esg', 'csr')">S: 사회공헌</button>
+                </div>
+                
+                <!-- Environment Tab -->
+                <div id="esg-env" class="tab-content active">
+                    <h3>2025 환경보호 (그린 캠페인)</h3>
+                    <p class="tab-desc">일류기업 수준의 ESG 경영 도입의 첫 시작으로 구성원 참여형 환경보호 캠페인을 진행합니다.</p>
+                    <div class="poster-grid">
+                        <img src="Enviornment/그린-캠페인 포스터.jpg" alt="그린 캠페인 포스터" class="poster-img" onclick="viewImage(this.src)">
+                        <img src="Enviornment/텀블러 챌린지 포스터.jpg" alt="텀블러 챌린지 포스터" class="poster-img" onclick="viewImage(this.src)">
+                        <img src="Enviornment/텀블러 사용 권장 포스터.jpg" alt="텀블러 사용 권장 포스터" class="poster-img" onclick="viewImage(this.src)">
+                        <img src="Enviornment/텀블러 챌린지 명예의 전당.jpg" alt="텀블러 챌린지 명예의 전당" class="poster-img" onclick="viewImage(this.src)">
+                    </div>
+                    <div class="campaign-notice">
+                        <strong><i class="fas fa-recycle"></i> 2026 연간 캠페인:</strong> 종이팩 분리배출 진행 중
+                    </div>
+                </div>
+
+                <!-- CSR Tab -->
+                <div id="esg-csr" class="tab-content hidden">
+                    <h3>사회공헌 활동</h3>
+                    
+                    <div class="csr-section">
+                        <h4><i class="fas fa-hand-holding-heart"></i> 정기후원: 드림앤비젼</h4>
+                        <p>굿네이버스와 파트너십을 맺고, 구성원-회사 일대일 매칭 펀딩으로 진행됩니다.</p>
+                        
+                        <div class="sub-tabs">
+                            <button class="sub-tab-btn active" onclick="switchSubTab('csr', '2023')">2023년도 사업</button>
+                            <button class="sub-tab-btn" onclick="switchSubTab('csr', '2024')">2024년도 사업</button>
+                        </div>
+                        
+                        <div id="csr-2023" class="sub-tab-content active">
+                            <div class="pdf-render-area" id="pdf-area-2023">
+                                <div class="pdf-loader" id="pdf-loader-2023"><i class="fas fa-spinner fa-spin"></i> 문서 불러오는 중...</div>
+                                <div class="pdf-canvas-container" id="pdf-canvas-2023"></div>
+                            </div>
+                            <a href="CSR/2023년도 드림앤비젼 결과보고.pdf" target="_blank" class="btn-download"><i class="fas fa-file-pdf"></i> 새 창에서 PDF 보기</a>
+                        </div>
+                        
+                        <div id="csr-2024" class="sub-tab-content hidden">
+                            <div class="pdf-render-area" id="pdf-area-2024">
+                                <div class="pdf-loader" id="pdf-loader-2024"><i class="fas fa-spinner fa-spin"></i> 문서 불러오는 중...</div>
+                                <div class="pdf-canvas-container" id="pdf-canvas-2024"></div>
+                            </div>
+                            <a href="CSR/2024 드림앤비젼 결과보고.pdf" target="_blank" class="btn-download"><i class="fas fa-file-pdf"></i> 새 창에서 PDF 보기</a>
+                        </div>
+                    </div>
+
+                    <div class="csr-section mt-4">
+                        <h4><i class="fas fa-globe"></i> 일시후원 내역</h4>
+                        <ul class="donation-list">
+                            <li><strong>교육의 봄 단체 후원:</strong> 2023.01 / 2024.01 / 2025.08 / 2026.04</li>
+                            <li><strong>튀르키예 대지진 피해 긴급구호:</strong> 2023.01</li>
+                            <li><strong>국내 경남·경북 산불 피해 긴급구호:</strong> 2025.03</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Gallery -->
+    <div id="gallery-modal" class="modal">
+        <div class="modal-content glass-panel large-modal">
+            <button class="close-modal" onclick="closeModal('gallery-modal')"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <h2><i class="fas fa-images"></i> 주요행사 갤러리</h2>
+            </div>
+            <div class="modal-body">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab('gallery', 'foundation')">창립기념일</button>
+                    <button class="tab-btn" onclick="switchTab('gallery', 'yep')">Year End Party</button>
+                </div>
+                
+                <!-- Foundation Day Tab -->
+                <div id="gallery-foundation" class="tab-content active masonry-gallery">
+                    <img src="주요행사 사진/창립기념일/2024-1.jpg" alt="2024" onclick="viewImage(this.src)">
+                    <img src="주요행사 사진/창립기념일/2025-1.jpg" alt="2025" onclick="viewImage(this.src)">
+                    <img src="주요행사 사진/창립기념일/2025-2.png" alt="2025" onclick="viewImage(this.src)">
+                    <img src="주요행사 사진/창립기념일/2026 1.춘천팀.jpg" alt="2026 춘천" onclick="viewImage(this.src)">
+                    <img src="주요행사 사진/창립기념일/2026 2.홍천팀.jpg" alt="2026 홍천" onclick="viewImage(this.src)">
+                    <img src="주요행사 사진/창립기념일/2026 3.속초.jpg" alt="2026 속초" onclick="viewImage(this.src)">
+                    <img src="주요행사 사진/창립기념일/2026 4.속초의밤.jpg" alt="2026 속초밤" onclick="viewImage(this.src)">
+                </div>
+
+                <!-- YEP Tab -->
+                <div id="gallery-yep" class="tab-content hidden masonry-gallery">
+                    <img src="주요행사 사진/Year End Party/2024 YEP.JPG" alt="2024 YEP" onclick="viewImage(this.src)">
+                    <img src="주요행사 사진/Year End Party/2025.png" alt="2025 YEP" onclick="viewImage(this.src)">
+                    <!-- 384MB 용량 초과로 GitHub 업로드 제외 (LFS 필요)
+                    <video controls class="gallery-video">
+                        <source src="주요행사 사진/Year End Party/2025.MP4" type="video/mp4">
+                        브라우저가 비디오 태그를 지원하지 않습니다.
+                    </video>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Viewer Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

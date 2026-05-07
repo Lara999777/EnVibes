@@ -11,7 +11,7 @@ function openModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        document.body.style.overflow = 'hidden'; 
     }
 }
 
@@ -20,19 +20,15 @@ function closeModal(modalId) {
     if (modal) {
         modal.classList.remove('active');
         document.body.style.overflow = '';
-        
-        // Stop video if modal closes
         const videos = modal.querySelectorAll('video');
         videos.forEach(vid => vid.pause());
     }
 }
 
-// Close modal on outside click
 window.onclick = function(event) {
     if (event.target.classList.contains('modal')) {
         event.target.classList.remove('active');
         document.body.style.overflow = '';
-        
         const videos = event.target.querySelectorAll('video');
         videos.forEach(vid => vid.pause());
     }
@@ -40,120 +36,31 @@ window.onclick = function(event) {
 
 /* --- Tabs --- */
 function switchTab(modalPrefix, tabId) {
-    // Hide all tabs
     const contents = document.querySelectorAll(`#${modalPrefix}-modal .tab-content`);
-    contents.forEach(content => content.classList.add('hidden'));
-    contents.forEach(content => content.classList.remove('active'));
+    contents.forEach(content => {
+        content.classList.add('hidden');
+        content.classList.remove('active');
+    });
     
-    // Deactivate all buttons
     const buttons = document.querySelectorAll(`#${modalPrefix}-modal .tab-btn`);
     buttons.forEach(btn => btn.classList.remove('active'));
     
-    // Show active tab
-    document.getElementById(`${modalPrefix}-${tabId}`).classList.remove('hidden');
-    document.getElementById(`${modalPrefix}-${tabId}`).classList.add('active');
-    
-    // Activate clicked button
-    if (event && event.currentTarget) {
-        event.currentTarget.classList.add('active');
+    const targetTab = document.getElementById(`${modalPrefix}-${tabId}`);
+    if (targetTab) {
+        targetTab.classList.remove('hidden');
+        targetTab.classList.add('active');
     }
     
-    // CSR PDF 렌더링 초기화
-    if (tabId === 'csr' && !window.csrPdfRendered) {
-        window.csrPdfRendered = true;
-        renderPDF('CSR/2023년도 드림앤비젼 결과보고.pdf', 'pdf-canvas-2023', 'pdf-loader-2023');
-    }
-}
-
-/* --- Sub Tabs --- */
-function switchSubTab(prefix, subTabId) {
-    const section = document.getElementById(`esg-${prefix}`);
-    if (!section) return;
-    
-    // Hide all sub-tabs
-    const contents = section.querySelectorAll('.sub-tab-content');
-    contents.forEach(content => content.classList.add('hidden'));
-    contents.forEach(content => content.classList.remove('active'));
-    
-    // Deactivate all sub-tab buttons
-    const buttons = section.querySelectorAll('.sub-tab-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    
-    // Show active sub-tab
-    const targetContent = document.getElementById(`${prefix}-${subTabId}`);
-    if (targetContent) {
-        targetContent.classList.remove('hidden');
-        targetContent.classList.add('active');
-    }
-    
-    // Activate clicked button
-    if (event && event.currentTarget) {
-        event.currentTarget.classList.add('active');
-    }
-
-    if (prefix === 'csr') {
-        const year = subTabId;
-        const pdfUrl = year === '2023' 
-            ? 'CSR/2023년도 드림앤비젼 결과보고.pdf' 
-            : 'CSR/2024 드림앤비젼 결과보고.pdf';
-        renderPDF(pdfUrl, `pdf-canvas-${year}`, `pdf-loader-${year}`);
-    }
-}
-
-/* --- PDF Renderer --- */
-let renderingPdfs = {};
-async function renderPDF(url, containerId, loaderId) {
-    if (renderingPdfs[containerId]) return;
-    renderingPdfs[containerId] = true;
-
-    const container = document.getElementById(containerId);
-    const loader = document.getElementById(loaderId);
-    if (!container || !loader) return;
-
-    loader.style.display = 'block';
-
-    try {
-        const loadingTask = pdfjsLib.getDocument(url);
-        const pdf = await loadingTask.promise;
-        const numPages = pdf.numPages;
-
-        for (let pageNum = 1; pageNum <= numPages; pageNum++) {
-            const page = await pdf.getPage(pageNum);
-            const viewport = page.getViewport({ scale: 1.5 });
-            
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-            
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-            
-            container.appendChild(canvas);
-
-            const renderContext = {
-                canvasContext: context,
-                viewport: viewport
-            };
-            
-            await page.render(renderContext).promise;
-        }
-    } catch (err) {
-        container.innerHTML = `<div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
-            <iframe src="${url}" style="width: 100%; height: 100%; flex-grow: 1; border: none; border-radius: 8px;"></iframe>
-            <div style="padding: 10px; font-size: 0.85rem; color: var(--text-secondary); text-align: center;">
-                브라우저 환경(로컬 파일 등)에 따라 자체 뷰어로 표시됩니다.
-            </div>
-        </div>`;
-    } finally {
-        loader.style.display = 'none';
+    if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.classList.add('active');
     }
 }
 
 /* --- Lightbox --- */
-function viewImage(src) {
+function openLightbox(imgElement) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    
-    lightboxImg.src = src;
+    lightboxImg.src = imgElement.src;
     lightbox.classList.add('active');
 }
 
@@ -164,7 +71,7 @@ function closeLightbox() {
 /* --- CMS Logic --- */
 function initCMS() {
     // --- Member News CMS ---
-    const NEWS_KEY = 'envibes_member_news_v4'; 
+    const NEWS_KEY = 'envibes_member_news_v5'; // 버전업하여 로컬 데이터 초기화 유도
     const defaultNews = `
 <div class="news-item"><i class="fas fa-ring"></i> <span><strong>결혼 소식!</strong> 5/31 기업발전그룹 Lara의 결혼을 축하해주세요! 🎉</span></div>
 <div class="news-item"><i class="fas fa-baby-carriage"></i> <span><strong>출산 소식!</strong> 품질관리그룹 Leo의 둘째 출산을 축하해주세요! 🎉</span></div>
@@ -180,7 +87,7 @@ function initCMS() {
 
     function loadNews() {
         const savedData = localStorage.getItem(NEWS_KEY);
-        if (savedData) {
+        if (savedData && savedData.trim() !== '') {
             newsDisplay.innerHTML = savedData;
         } else {
             newsDisplay.innerHTML = defaultNews;
@@ -188,32 +95,38 @@ function initCMS() {
         }
     }
 
-    loadNews();
+    if (newsDisplay) loadNews();
 
-    editNewsBtn.addEventListener('click', () => {
-        const currentContent = localStorage.getItem(NEWS_KEY) || defaultNews;
-        newsTextarea.value = currentContent;
-        newsDisplay.classList.add('hidden');
-        newsEditorContainer.classList.remove('hidden');
-    });
+    if (editNewsBtn) {
+        editNewsBtn.addEventListener('click', () => {
+            const currentContent = localStorage.getItem(NEWS_KEY) || defaultNews;
+            newsTextarea.value = currentContent;
+            newsDisplay.classList.add('hidden');
+            newsEditorContainer.classList.remove('hidden');
+        });
+    }
 
-    saveNewsBtn.addEventListener('click', () => {
-        const newContent = newsTextarea.value.trim();
-        if (newContent) {
-            localStorage.setItem(NEWS_KEY, newContent);
-            newsDisplay.innerHTML = newContent;
-        }
-        newsEditorContainer.classList.add('hidden');
-        newsDisplay.classList.remove('hidden');
-    });
+    if (saveNewsBtn) {
+        saveNewsBtn.addEventListener('click', () => {
+            const newContent = newsTextarea.value.trim();
+            if (newContent) {
+                localStorage.setItem(NEWS_KEY, newContent);
+                newsDisplay.innerHTML = newContent;
+            }
+            newsEditorContainer.classList.add('hidden');
+            newsDisplay.classList.remove('hidden');
+        });
+    }
 
-    cancelNewsBtn.addEventListener('click', () => {
-        newsEditorContainer.classList.add('hidden');
-        newsDisplay.classList.remove('hidden');
-    });
+    if (cancelNewsBtn) {
+        cancelNewsBtn.addEventListener('click', () => {
+            newsEditorContainer.classList.add('hidden');
+            newsDisplay.classList.remove('hidden');
+        });
+    }
 
     // --- Clubs CMS ---
-    const CLUBS_KEY = 'envibes_clubs_v4';
+    const CLUBS_KEY = 'envibes_clubs_v5';
     const defaultClubs = `
 <span class="chip"><i class="fas fa-book"></i> 독서(Leo)</span>
 <span class="chip"><i class="fas fa-door-open"></i> 방탈출(Olaf)</span>
@@ -236,7 +149,7 @@ function initCMS() {
 
     function loadClubs() {
         const savedData = localStorage.getItem(CLUBS_KEY);
-        if (savedData) {
+        if (savedData && savedData.trim() !== '') {
             clubsDisplay.innerHTML = savedData;
         } else {
             clubsDisplay.innerHTML = defaultClubs;
@@ -244,29 +157,33 @@ function initCMS() {
         }
     }
 
-    loadClubs();
+    if (clubsDisplay) loadClubs();
 
-    editClubsBtn.addEventListener('click', () => {
-        const currentContent = localStorage.getItem(CLUBS_KEY) || defaultClubs;
-        clubsTextarea.value = currentContent;
-        clubsDisplay.classList.add('hidden');
-        clubsEditorContainer.classList.remove('hidden');
-    });
+    if (editClubsBtn) {
+        editClubsBtn.addEventListener('click', () => {
+            const currentContent = localStorage.getItem(CLUBS_KEY) || defaultClubs;
+            clubsTextarea.value = currentContent;
+            clubsDisplay.classList.add('hidden');
+            clubsEditorContainer.classList.remove('hidden');
+        });
+    }
 
-    saveClubsBtn.addEventListener('click', () => {
-        const newContent = clubsTextarea.value.trim();
-        if (newContent) {
-            localStorage.setItem(CLUBS_KEY, newContent);
-            clubsDisplay.innerHTML = newContent;
-        }
-        clubsEditorContainer.classList.add('hidden');
-        clubsDisplay.classList.remove('hidden');
-    });
+    if (saveClubsBtn) {
+        saveClubsBtn.addEventListener('click', () => {
+            const newContent = clubsTextarea.value.trim();
+            if (newContent) {
+                localStorage.setItem(CLUBS_KEY, newContent);
+                clubsDisplay.innerHTML = newContent;
+            }
+            clubsEditorContainer.classList.add('hidden');
+            clubsDisplay.classList.remove('hidden');
+        });
+    }
 
-    cancelClubsBtn.addEventListener('click', () => {
-        clubsEditorContainer.classList.add('hidden');
-        clubsDisplay.classList.remove('hidden');
-    });
-}
-
+    if (cancelClubsBtn) {
+        cancelClubsBtn.addEventListener('click', () => {
+            clubsEditorContainer.classList.add('hidden');
+            clubsDisplay.classList.remove('hidden');
+        });
+    }
 }

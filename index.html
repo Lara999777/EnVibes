@@ -18,7 +18,7 @@
     <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css?v=5.0">
+    <link rel="stylesheet" href="styles.css?v=6.0">
 </head>
 <body>
     <!-- Ambient Background -->
@@ -100,12 +100,12 @@
             </a>
 
             <!-- Category 3: Member News -->
-            <div class="bento-card col-span-2 row-span-2 card-news" onclick="openModal('news-modal')">
-                <div class="card-header-flex">
+            <div class="bento-card col-span-2 card-news" onclick="openModal('news-modal')">
+                <div class="card-content">
                     <div class="card-icon"><i class="fas fa-cake-candles"></i></div>
+                    <h2>구성원 소식</h2>
+                    <p>결혼 · 출산 등 구성원 경조사 소식</p>
                 </div>
-                <h2>구성원 소식</h2>
-                <p>결혼 · 출산 등 구성원 경조사 소식</p>
                 <div class="hover-arrow"><i class="fas fa-arrow-right"></i></div>
             </div>
 
@@ -154,56 +154,113 @@
                     <button class="tab-btn active" onclick="switchTab('esg', 'env')">E: 환경보호</button>
                     <button class="tab-btn" onclick="switchTab('esg', 'csr')">S: 사회공헌</button>
                 </div>
-                
+
                 <!-- Environment Tab -->
                 <div id="esg-env" class="tab-content active">
-                    <h3>2025 환경보호 (그린 캠페인)</h3>
-                    <p class="tab-desc">일류기업 수준의 ESG 경영 도입의 첫 시작으로 구성원 참여형 환경보호 캠페인을 진행합니다.</p>
-                    <div class="poster-grid">
-                        <img src="Enviornment/그린-캠페인 포스터.jpg" alt="그린 캠페인 포스터" class="poster-img" onclick="viewImage(this.src)">
-                        <img src="Enviornment/텀블러 챌린지 포스터.jpg" alt="텀블러 챌린지 포스터" class="poster-img" onclick="viewImage(this.src)">
-                        <img src="Enviornment/텀블러 사용 권장 포스터.jpg" alt="텀블러 사용 권장 포스터" class="poster-img" onclick="viewImage(this.src)">
-                        <img src="Enviornment/텀블러 챌린지 명예의 전당.jpg" alt="텀블러 챌린지 명예의 전당" class="poster-img" onclick="viewImage(this.src)">
+                    <div class="esg-intro">
+                        <p>일류기업으로 나아가는 앤비젼의 수준에 맞춰, 구성원들도 이에 부합하는 의식 수준을 갖추고자 환경보호 캠페인을 도입했습니다. 당장의 이익이나 혜택을 체감할 수는 없지만, 대의의 환경을 생각하는 가치를 추구하는 의식 수준을 향상할 수 있도록 회사에서 경험을 제공합니다.</p>
+                        <p class="esg-purpose"><i class="fas fa-bullseye"></i> <strong>캠페인 목적</strong></p>
+                        <ul>
+                            <li><strong>지속 가능한 문화 정착:</strong> 2025년에 이어 환경보호 활동을 일상생활로 확장하여, 단순한 의무가 아닌 우리만의 환경보호 문화 조성</li>
+                            <li><strong>자발적 실천 기록:</strong> 일상 속 작은 실천을 데이터(점수)화하여 성취감 고취 및 지속적인 동기 부여 제공</li>
+                        </ul>
                     </div>
-                    <div class="campaign-notice">
-                        <strong><i class="fas fa-recycle"></i> 2026 연간 캠페인:</strong> 종이팩 분리배출 진행 중
+
+                    <!-- 2026 진행중 캠페인 -->
+                    <div class="gallery-year-section">
+                        <h3 class="gallery-year-title">2026 <span class="badge-now">진행중</span></h3>
+                        <div class="campaign-card">
+                            <h4>환경보호 캠페인: 종이팩 분리배출</h4>
+                            <p>개인이 시작할 수 있는 환경보호 활동의 연장선으로, 2026년에는 종이팩 분리배출 캠페인을 진행합니다.</p>
+                            <div class="poster-grid" style="margin-top:16px;">
+                                <img src="Enviornment/2026-1.환경 포스터.jpg" alt="2026 환경 포스터" class="poster-img" onclick="viewImage(this.src)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2025 지난 캠페인 -->
+                    <div class="gallery-year-section">
+                        <h3 class="gallery-year-title">2025</h3>
+                        <div class="campaign-card">
+                            <h4>그린 캠페인 & 도전! 텀블러 챌린지</h4>
+                            <p>2025년 하반기에는 개인이 회사에서 할 수 있는 환경보호 활동으로 일회용품을 줄이고, 텀블러 사용을 권장하고자 텀블러 챌린지를 진행했습니다.</p>
+
+                            <div class="challenge-info">
+                                <div class="challenge-detail">
+                                    <p><i class="fas fa-calendar"></i> <strong>기간:</strong> 2025년 7월 7일(월) ~ 9월 22일(월)</p>
+                                    <p><i class="fas fa-camera"></i> <strong>방법:</strong> 타임스탬프 앱을 활용해 날짜가 표시된 텀블러 인증샷 촬영</p>
+                                </div>
+
+                                <div class="challenge-rules">
+                                    <h5><i class="fas fa-clipboard-check"></i> 인증 조건</h5>
+                                    <ul>
+                                        <li>본인이 직접 텀블러를 사용하고 있는 사진 (컵 내부가 보이도록)</li>
+                                        <li>타임스탬프 앱을 통해 날짜가 명확히 확인 가능</li>
+                                        <li>1일 1회만 인정 (총 55회 중, 누적 40회 또는 30회 이상 인증 시 참여 완료)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="challenge-rewards">
+                                    <h5><i class="fas fa-gift"></i> 기념품 안내</h5>
+                                    <p style="margin-bottom:8px;color:var(--accent-secondary);">완주자 전원은 앤톡 게시판 명예의 전당에 등록!</p>
+                                    <div class="reward-tier">
+                                        <strong>40일 이상 인증 시 (택 1)</strong>
+                                        <span>스탠리 텀블러 1.18L / 리사이클 메신저 가방 / 마켓컬리 상품권 3만원권</span>
+                                    </div>
+                                    <div class="reward-tier">
+                                        <strong>30일 이상 인증 시 (택 1)</strong>
+                                        <span>스탠리 텀블러 473ml / 배민 상품권 2만원권</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="poster-grid" style="margin-top:16px;">
+                                <img src="Enviornment/2025-1.환경보호캠페인1.jpg" alt="그린 캠페인 포스터" class="poster-img" onclick="viewImage(this.src)">
+                                <img src="Enviornment/2025-2.텀블러 사용 권장 포스터.jpg" alt="텀블러 사용 권장 포스터" class="poster-img" onclick="viewImage(this.src)">
+                                <img src="Enviornment/2025-3.텀블러 챌린지 포스터.jpg" alt="텀블러 챌린지 포스터" class="poster-img" onclick="viewImage(this.src)">
+                                <img src="Enviornment/2025-4.텀블러 챌린지 명예의 전당.jpg" alt="텀블러 챌린지 명예의 전당" class="poster-img" onclick="viewImage(this.src)">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- CSR Tab -->
                 <div id="esg-csr" class="tab-content hidden">
                     <h3>사회공헌 활동</h3>
-                    
+
                     <div class="csr-section">
                         <h4><i class="fas fa-hand-holding-heart"></i> 정기후원: 드림앤비젼</h4>
                         <p>굿네이버스와 파트너십을 맺고, 구성원-회사 일대일 매칭 펀딩으로 진행됩니다.</p>
-                        
+
                         <div class="sub-tabs">
                             <button class="sub-tab-btn active" onclick="switchSubTab('csr', '2023')">2023년도 사업</button>
                             <button class="sub-tab-btn" onclick="switchSubTab('csr', '2024')">2024년도 사업</button>
                         </div>
-                        
+
                         <div id="csr-2023" class="sub-tab-content active">
-                            <div class="pdf-render-area" id="pdf-area-2023">
-                                <div class="pdf-loader" id="pdf-loader-2023"><i class="fas fa-spinner fa-spin"></i> 문서 불러오는 중...</div>
-                                <div class="pdf-canvas-container" id="pdf-canvas-2023"></div>
+                            <div class="pdf-embed-area">
+                                <iframe src="CSR/2023년도 드림앤비젼 결과보고.pdf" class="pdf-iframe" title="2023 드림앤비젼 결과보고"></iframe>
                             </div>
                             <a href="CSR/2023년도 드림앤비젼 결과보고.pdf" target="_blank" class="btn-download"><i class="fas fa-file-pdf"></i> 새 창에서 PDF 보기</a>
                         </div>
-                        
+
                         <div id="csr-2024" class="sub-tab-content hidden">
-                            <div class="pdf-render-area" id="pdf-area-2024">
-                                <div class="pdf-loader" id="pdf-loader-2024"><i class="fas fa-spinner fa-spin"></i> 문서 불러오는 중...</div>
-                                <div class="pdf-canvas-container" id="pdf-canvas-2024"></div>
+                            <div class="pdf-embed-area">
+                                <iframe src="CSR/2024 드림앤비젼 결과보고.pdf" class="pdf-iframe" title="2024 드림앤비젼 결과보고"></iframe>
                             </div>
                             <a href="CSR/2024 드림앤비젼 결과보고.pdf" target="_blank" class="btn-download"><i class="fas fa-file-pdf"></i> 새 창에서 PDF 보기</a>
                         </div>
                     </div>
 
                     <div class="csr-section mt-4">
-                        <h4><i class="fas fa-globe"></i> 일시후원 내역</h4>
+                        <h4><i class="fas fa-globe"></i> 일시후원 내역 (각 1,000만원)</h4>
                         <ul class="donation-list">
-                            <li><strong>교육의 봄 단체 후원:</strong> 2023.01 / 2024.01 / 2025.08 / 2026.04</li>
+                            <li>
+                                <strong>교육의 봄 단체 후원:</strong> 2023.01 / 2024.01 / 2025.08 / 2026.04
+                                <div class="donation-desc">
+                                    <p><a href="https://www.springofedu.com" target="_blank" style="color:var(--accent-secondary);">교육의 봄</a>은 경제적 어려움으로 교육 기회를 잃은 저소득 가정 아이들에게 학습 기회를 제공하는 비영리 교육지원 단체입니다. 앤비젼은 비전(Vision)을 핵심 가치로 삼는 기업으로서, 미래 세대가 가능성을 포기하지 않도록 돕는 교육의 봄의 가치에 깊이 공감하여 정기적으로 후원하고 있습니다.</p>
+                                </div>
+                            </li>
                             <li><strong>튀르키예 대지진 피해 긴급구호:</strong> 2023.01</li>
                             <li><strong>국내 경남·경북 산불 피해 긴급구호:</strong> 2025.03</li>
                         </ul>
@@ -234,9 +291,10 @@
                         <h3 class="gallery-year-title">2026</h3>
                         <div class="gallery-event">
                             <h4 class="gallery-event-title">창립기념일 행사 "따로 또 같이" in 속초 롯데리조트</h4>
+                            <p class="gallery-event-venue"><i class="fas fa-calendar-days"></i> 4월 24일(금) 8시 ~ 25일(일) 12시</p>
                             <div class="gallery-event-desc">
-                                <p><strong>[북한강 낭만질주]</strong> 춘천 김유정역 레일바이크 탑승 → 닭갈비 <strong>Or [주토피아 탐험대]</strong> 홍천 알파카월드 관람 및 체험 → 두부전골</p>
-                                <p>속초 도착 후 자유여행 Or 패키지 일정</p>
+                                <p><strong>[북한강 낭만질주]</strong> 춘천 김유정역 레일바이크 탑승 → 닭갈비 <span class="or-divider">Or</span> <strong>[주토피아 탐험대]</strong> 홍천 알파카월드 관람 및 체험 → 두부전골</p>
+                                <p>속초 도착 후 자유여행 <span class="or-divider">Or</span> 패키지 일정</p>
                                 <p><strong>'속초의 밤'</strong> 레크레이션 진행</p>
                                 <ul>
                                     <li>장기근속자 시상 – 10년 근속 Jennie, 20년 근속 Tim</li>
@@ -257,6 +315,7 @@
                         <h3 class="gallery-year-title">2025</h3>
                         <div class="gallery-event">
                             <h4 class="gallery-event-title">창립기념일 행사 in 충북 벨포레 리조트</h4>
+                            <p class="gallery-event-venue"><i class="fas fa-calendar-days"></i> 4월 18일(금) 8시 ~ 19일(토) 12시</p>
                             <div class="gallery-event-desc">
                                 <ul>
                                     <li>모토아레나 레이싱, 마운틴카트, 사계절썰매 등 야외 액티비티</li>
@@ -278,6 +337,7 @@
                         <h3 class="gallery-year-title">2024</h3>
                         <div class="gallery-event">
                             <h4 class="gallery-event-title">창립기념일 행사 in 대부도</h4>
+                            <p class="gallery-event-venue"><i class="fas fa-calendar-days"></i> 4월 19일(금) 10시 ~ 20일(토) 12시</p>
                             <div class="gallery-event-desc">
                                 <ul>
                                     <li>야외 팀빌딩 프로그램 – 파도타기, 대왕 타이어굴리기, 판 뒤집기, 희망충전 게임 등</li>
@@ -497,7 +557,7 @@
                         <img src="사내 동호회/테니스 동호회.png" alt="테니스 동호회" class="club-photo" onclick="viewImage(this.src)">
                         <div class="club-info">
                             <h4><i class="fas fa-baseball"></i> 테니스 <span class="club-leader">회장: Eric</span></h4>
-                            <p>주말에 모여 테니스를 치며 건전한 여가활동을 합니다.</p>
+                            <p>퇴근 후 모여 테니스를 치며 건전한 여가활동을 합니다.</p>
                         </div>
                     </div>
                 </div>
@@ -544,6 +604,6 @@
         <img class="lightbox-content" id="lightbox-img">
     </div>
 
-    <script src="script.js?v=5.0"></script>
+    <script src="script.js?v=6.0"></script>
 </body>
 </html>

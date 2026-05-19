@@ -4,8 +4,107 @@
 
 /* --- Constants --- */
 const AUTH_KEY = 'envibes_auth_v1';
-const USERS_KEY = 'envibes_users_v1';
+const USERS_KEY = 'envibes_users_v2';
 const ADMIN_PIN = '1fbyep';
+
+/* --- Default User List (from attendance-records) --- */
+const DEFAULT_USERS = [
+    {name:"곽기업",department:"비전기술",pin:"4370"},
+    {name:"곽하능",department:"비전기술",pin:"0353"},
+    {name:"고정재",department:"품질관리",pin:"4505"},
+    {name:"권보라",department:"기업발전",pin:"7975"},
+    {name:"김경태",department:"품질관리",pin:"2524"},
+    {name:"김기원",department:"품질관리",pin:"0737"},
+    {name:"김문정",department:"제품기획",pin:"8086"},
+    {name:"김병도",department:"솔루션영업",pin:"2125"},
+    {name:"김다애",department:"광학기술",pin:"0329"},
+    {name:"김성태",department:"솔루션영업",pin:"3040"},
+    {name:"김수룡",department:"AE",pin:"8577"},
+    {name:"김수영",department:"AE",pin:"5943"},
+    {name:"김아영",department:"품질관리",pin:"8151"},
+    {name:"김우섭",department:"광학기술",pin:"4592"},
+    {name:"김윤숙",department:"품질관리",pin:"0105"},
+    {name:"김태형",department:"전략구매",pin:"3023"},
+    {name:"김하랑",department:"솔컴",pin:"8291"},
+    {name:"김학길",department:"AE",pin:"3300"},
+    {name:"김현수",department:"전략구매",pin:"5361"},
+    {name:"김회만",department:"제조기술",pin:"4897"},
+    {name:"김진영",department:"광학기술",pin:"6457"},
+    {name:"김지은",department:"솔컴",pin:"0329"},
+    {name:"김창범",department:"AE",pin:"9358"},
+    {name:"류진성",department:"AE",pin:"1934"},
+    {name:"배경원",department:"영업관리",pin:"9601"},
+    {name:"백남석",department:"IMT",pin:"4182"},
+    {name:"박경희",department:"IMT",pin:"5287"},
+    {name:"박창재",department:"경영진",pin:"3678"},
+    {name:"박종만",department:"재경",pin:"4319"},
+    {name:"박채민",department:"비전기술",pin:"6104"},
+    {name:"박철성",department:"기업발전",pin:"5505"},
+    {name:"박지선",department:"솔루션영업",pin:"2859"},
+    {name:"박지안",department:"비전기술",pin:"7934"},
+    {name:"박주형",department:"제조기술",pin:"7755"},
+    {name:"박태희",department:"제조기술",pin:"7192"},
+    {name:"박효진",department:"IMT",pin:"8415"},
+    {name:"조용균",department:"솔루션영업",pin:"6353"},
+    {name:"조혜현",department:"솔컴",pin:"6912"},
+    {name:"나동수",department:"광학기술",pin:"8182"},
+    {name:"남유진",department:"전략구매",pin:"6756"},
+    {name:"노윤성",department:"제품기획",pin:"1546"},
+    {name:"노태승",department:"제조기술",pin:"0448"},
+    {name:"서지환",department:"솔루션영업",pin:"4697"},
+    {name:"손혜주",department:"영업관리",pin:"0900"},
+    {name:"신광식",department:"비전기술",pin:"1324"},
+    {name:"신상구",department:"광학기술",pin:"3933"},
+    {name:"심보현",department:"영업관리",pin:"5311"},
+    {name:"안정우",department:"제조기술",pin:"0617"},
+    {name:"양근영",department:"솔루션영업",pin:"6170"},
+    {name:"양시창",department:"영업관리",pin:"3825"},
+    {name:"양찬석",department:"제품기획",pin:"0183"},
+    {name:"엄현빈",department:"품질관리",pin:"8596"},
+    {name:"연관모",department:"비전기술",pin:"3629"},
+    {name:"염태선",department:"IMT",pin:"8842"},
+    {name:"유병훈",department:"솔루션영업",pin:"9628"},
+    {name:"유승호",department:"제조기술",pin:"4456"},
+    {name:"유원영",department:"기업발전",pin:"7916"},
+    {name:"유태호",department:"광학기술",pin:"9849"},
+    {name:"윤대영",department:"품질관리",pin:"2907"},
+    {name:"윤상희",department:"재경",pin:"7624"},
+    {name:"윤장호",department:"솔루션영업",pin:"3657"},
+    {name:"이주한",department:"광학기술",pin:"6917"},
+    {name:"이중연",department:"비전기술",pin:"9383"},
+    {name:"이규섭",department:"광학기술",pin:"0010"},
+    {name:"이충환",department:"AE",pin:"9063"},
+    {name:"이병훈",department:"솔루션영업",pin:"0341"},
+    {name:"이대겸",department:"솔루션영업",pin:"9808"},
+    {name:"이성일",department:"AE",pin:"2706"},
+    {name:"이용석",department:"광학기술",pin:"9422"},
+    {name:"이용희",department:"AE",pin:"4694"},
+    {name:"이재열",department:"비전기술",pin:"5687"},
+    {name:"이은비",department:"영업관리",pin:"7595"},
+    {name:"이현호",department:"AE",pin:"5355"},
+    {name:"이명호",department:"제조기술",pin:"9844"},
+    {name:"임병학",department:"솔루션영업",pin:"6190"},
+    {name:"임수찬",department:"전략구매",pin:"2142"},
+    {name:"임해동",department:"광학기술",pin:"1570"},
+    {name:"장진욱",department:"제조기술",pin:"1505"},
+    {name:"전윤선",department:"기업발전",pin:"8272"},
+    {name:"전제민",department:"영업관리",pin:"3021"},
+    {name:"전명갑",department:"광학기술",pin:"0175"},
+    {name:"전찬우",department:"IMT",pin:"6536"},
+    {name:"정세영",department:"제품기획",pin:"8723"},
+    {name:"정용범",department:"광학기술",pin:"5472"},
+    {name:"정훈재",department:"솔루션영업",pin:"0272"},
+    {name:"정진묵",department:"AE",pin:"9502"},
+    {name:"허성호",department:"제품기획",pin:"5478"},
+    {name:"황주연",department:"솔루션영업",pin:"1818"},
+    {name:"목한상",department:"비전기술",pin:"0706"},
+    {name:"진예섭",department:"AE",pin:"6725"},
+    {name:"지원수",department:"IMT",pin:"6714"},
+    {name:"최성진",department:"비전기술",pin:"1055"},
+    {name:"최준한",department:"품질관리",pin:"5571"},
+    {name:"최학범",department:"광학기술",pin:"0691"},
+    {name:"최희진",department:"솔루션영업",pin:"6442"}
+];
 
 /* ==========================================================================
    Initialization
@@ -27,9 +126,11 @@ function getUsers() {
     const saved = localStorage.getItem(USERS_KEY);
     if (saved) {
         try { return JSON.parse(saved); }
-        catch(e) { return []; }
+        catch(e) { /* fall through to seed */ }
     }
-    return [];
+    // Seed with default users on first load
+    saveUsers(DEFAULT_USERS);
+    return [...DEFAULT_USERS];
 }
 
 function saveUsers(users) {

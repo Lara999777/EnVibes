@@ -283,18 +283,17 @@
             </div>
             <div class="modal-body">
                 <div class="tabs">
-                    <button class="tab-btn active" onclick="switchTab('gallery', 'foundation')">창립기념일</button>
-                    <button class="tab-btn" onclick="switchTab('gallery', 'yep')">Year End Party</button>
+                    <button class="tab-btn active" onclick="switchTab('gallery', '2026')">2026</button>
+                    <button class="tab-btn" onclick="switchTab('gallery', '2025')">2025</button>
+                    <button class="tab-btn" onclick="switchTab('gallery', '2024')">2024</button>
+                    <button class="tab-btn" onclick="switchTab('gallery', '2023')">2023</button>
                 </div>
 
-                <!-- Foundation Day Tab -->
-                <div id="gallery-foundation" class="tab-content active">
-
-                    <!-- 2026 -->
+                <!-- 2026 Tab -->
+                <div id="gallery-2026" class="tab-content active">
                     <div class="gallery-year-section">
-                        <h3 class="gallery-year-title">2026</h3>
                         <div class="gallery-event">
-                            <h4 class="gallery-event-title">창립기념일 행사 "따로 또 같이" in 속초 롯데리조트</h4>
+                            <h4 class="gallery-event-title"><i class="fas fa-champagne-glasses"></i> 창립기념일 행사 "따로 또 같이" in 속초 롯데리조트</h4>
                             <p class="gallery-event-venue"><i class="fas fa-calendar-days"></i> 4월 24일(금) 8시 ~ 25일(일) 12시</p>
                             <div class="gallery-event-desc">
                                 <p><strong>[북한강 낭만질주]</strong> 춘천 김유정역 레일바이크 탑승 → 닭갈비 <span class="or-divider">Or</span> <strong>[주토피아 탐험대]</strong> 홍천 알파카월드 관람 및 체험 → 두부전골</p>
@@ -313,12 +312,14 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- 2025 -->
+                <!-- 2025 Tab -->
+                <div id="gallery-2025" class="tab-content hidden">
+                    <!-- 창립기념일 (4월) -->
                     <div class="gallery-year-section">
-                        <h3 class="gallery-year-title">2025</h3>
                         <div class="gallery-event">
-                            <h4 class="gallery-event-title">창립기념일 행사 in 충북 벨포레 리조트</h4>
+                            <h4 class="gallery-event-title"><i class="fas fa-champagne-glasses"></i> 창립기념일 행사 in 충북 벨포레 리조트</h4>
                             <p class="gallery-event-venue"><i class="fas fa-calendar-days"></i> 4월 18일(금) 8시 ~ 19일(토) 12시</p>
                             <div class="gallery-event-desc">
                                 <ul>
@@ -338,70 +339,10 @@
                         </div>
                     </div>
 
-                    <!-- 2024 -->
+                    <!-- Year End Party (연말) -->
                     <div class="gallery-year-section">
-                        <h3 class="gallery-year-title">2024</h3>
                         <div class="gallery-event">
-                            <h4 class="gallery-event-title">창립기념일 행사 in 대부도</h4>
-                            <p class="gallery-event-venue"><i class="fas fa-calendar-days"></i> 4월 19일(금) 10시 ~ 20일(토) 12시</p>
-                            <div class="gallery-event-desc">
-                                <ul>
-                                    <li>야외 팀빌딩 프로그램 – 파도타기, 대왕 타이어굴리기, 판 뒤집기, 희망충전 게임 등</li>
-                                    <li>장기근속자 시상 – 10년 근속 Jace, JM / 20년 근속 Bob, Mark</li>
-                                    <li>경품추첨</li>
-                                    <li>저녁 BBQ</li>
-                                </ul>
-                            </div>
-                            <div class="gallery-photos">
-                                <img src="주요행사 사진/창립기념일/2024-1.jpg" alt="2024" onclick="viewImage(this.src)">
-                                <img src="주요행사 사진/창립기념일/2024-2.jpg" alt="2024" onclick="viewImage(this.src)">
-                                <img src="주요행사 사진/창립기념일/2024-3.jpg" alt="2024" onclick="viewImage(this.src)">
-                                <img src="주요행사 사진/창립기념일/2024-4.jpg" alt="2024" onclick="viewImage(this.src)">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2023 -->
-                    <div class="gallery-year-section">
-                        <h3 class="gallery-year-title">2023</h3>
-                        <div class="gallery-event">
-                            <h4 class="gallery-event-title">창립20주년 해외여행 "4박 6일 호주 여행 (시드니)"</h4>
-                            <div class="gallery-event-desc">
-                                <p>지난 2022년도 YEP 행사로 진행한 창립 20주년 행사 아이디어 공모전에서 구성원이 선정한 1위: <em>"우리는 지금 호주 여행중"</em>으로 진행.</p>
-                                <p>인원이 많다보니 업무 공백을 최소화하기 위해 그룹별로 인원을 나눠서 총 4차로 나눠서 다녀왔습니다.</p>
-                                <div class="schedule-list">
-                                    <span>1차: 4/23(일)~28(금)</span>
-                                    <span>2차: 5/7(일)~12(금)</span>
-                                    <span>3차: 5/14(일)~20(금)</span>
-                                    <span>4차: 5/21(일)~26(금)</span>
-                                </div>
-                                <p><strong>주요일정</strong></p>
-                                <ul>
-                                    <li>와이너리 투어 (헌터벨리)</li>
-                                    <li>사막체험, 야생 돌핀크루즈 관람 (호프스테판)</li>
-                                    <li>시드니 동물원, 블루마운틴 – 시닉월드 3종 (케이블웨이, 레일웨이, 스카이웨이)</li>
-                                    <li>시드니 동부해안투어 – 더들리 페이지, 본다이비치, 갭파크 달링하버, 하이드파크 산책, 오페라하우스, 하버브릿지</li>
-                                    <li>디너크루즈</li>
-                                </ul>
-                            </div>
-                            <div class="gallery-photos">
-                                <img src="주요행사 사진/창립기념일/2023-1차.jpg" alt="2023 1차" onclick="viewImage(this.src)">
-                                <img src="주요행사 사진/창립기념일/2023-2차.jpg" alt="2023 2차" onclick="viewImage(this.src)">
-                                <img src="주요행사 사진/창립기념일/2023-3차.jpg" alt="2023 3차" onclick="viewImage(this.src)">
-                                <img src="주요행사 사진/창립기념일/2023-4차.jpg" alt="2023 4차" onclick="viewImage(this.src)">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- YEP Tab -->
-                <div id="gallery-yep" class="tab-content hidden">
-
-                    <!-- 2025 -->
-                    <div class="gallery-year-section">
-                        <h3 class="gallery-year-title">2025</h3>
-                        <div class="gallery-event">
-                            <h4 class="gallery-event-title">Year End Party</h4>
+                            <h4 class="gallery-event-title"><i class="fas fa-party-horn"></i> Year End Party</h4>
                             <p class="gallery-event-venue"><i class="fas fa-location-dot"></i> G밸리 기업시민청 / 현대아울렛 가산점 6층</p>
                             <div class="gallery-event-desc">
                                 <table class="yep-schedule">
@@ -442,12 +383,36 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- 2024 -->
+                <!-- 2024 Tab -->
+                <div id="gallery-2024" class="tab-content hidden">
+                    <!-- 창립기념일 (4월) -->
                     <div class="gallery-year-section">
-                        <h3 class="gallery-year-title">2024</h3>
                         <div class="gallery-event">
-                            <h4 class="gallery-event-title">Year End Party</h4>
+                            <h4 class="gallery-event-title"><i class="fas fa-champagne-glasses"></i> 창립기념일 행사 in 대부도</h4>
+                            <p class="gallery-event-venue"><i class="fas fa-calendar-days"></i> 4월 19일(금) 10시 ~ 20일(토) 12시</p>
+                            <div class="gallery-event-desc">
+                                <ul>
+                                    <li>야외 팀빌딩 프로그램 – 파도타기, 대왕 타이어굴리기, 판 뒤집기, 희망충전 게임 등</li>
+                                    <li>장기근속자 시상 – 10년 근속 Jace, JM / 20년 근속 Bob, Mark</li>
+                                    <li>경품추첨</li>
+                                    <li>저녁 BBQ</li>
+                                </ul>
+                            </div>
+                            <div class="gallery-photos">
+                                <img src="주요행사 사진/창립기념일/2024-1.jpg" alt="2024" onclick="viewImage(this.src)">
+                                <img src="주요행사 사진/창립기념일/2024-2.jpg" alt="2024" onclick="viewImage(this.src)">
+                                <img src="주요행사 사진/창립기념일/2024-3.jpg" alt="2024" onclick="viewImage(this.src)">
+                                <img src="주요행사 사진/창립기념일/2024-4.jpg" alt="2024" onclick="viewImage(this.src)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year End Party (연말) -->
+                    <div class="gallery-year-section">
+                        <div class="gallery-event">
+                            <h4 class="gallery-event-title"><i class="fas fa-party-horn"></i> Year End Party</h4>
                             <p class="gallery-event-venue"><i class="fas fa-location-dot"></i> G밸리 기업시민청 / 현대아울렛 가산점 6층</p>
                             <div class="gallery-event-desc">
                                 <table class="yep-schedule">
@@ -463,7 +428,39 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
+                <!-- 2023 Tab -->
+                <div id="gallery-2023" class="tab-content hidden">
+                    <div class="gallery-year-section">
+                        <div class="gallery-event">
+                            <h4 class="gallery-event-title"><i class="fas fa-champagne-glasses"></i> 창립20주년 해외여행 "4박 6일 호주 여행 (시드니)"</h4>
+                            <div class="gallery-event-desc">
+                                <p>지난 2022년도 YEP 행사로 진행한 창립 20주년 행사 아이디어 공모전에서 구성원이 선정한 1위: <em>"우리는 지금 호주 여행중"</em>으로 진행.</p>
+                                <p>인원이 많다보니 업무 공백을 최소화하기 위해 그룹별로 인원을 나눠서 총 4차로 나눠서 다녀왔습니다.</p>
+                                <div class="schedule-list">
+                                    <span>1차: 4/23(일)~28(금)</span>
+                                    <span>2차: 5/7(일)~12(금)</span>
+                                    <span>3차: 5/14(일)~20(금)</span>
+                                    <span>4차: 5/21(일)~26(금)</span>
+                                </div>
+                                <p><strong>주요일정</strong></p>
+                                <ul>
+                                    <li>와이너리 투어 (헌터벨리)</li>
+                                    <li>사막체험, 야생 돌핀크루즈 관람 (호프스테판)</li>
+                                    <li>시드니 동물원, 블루마운틴 – 시닉월드 3종 (케이블웨이, 레일웨이, 스카이웨이)</li>
+                                    <li>시드니 동부해안투어 – 더들리 페이지, 본다이비치, 갭파크 달링하버, 하이드파크 산책, 오페라하우스, 하버브릿지</li>
+                                    <li>디너크루즈</li>
+                                </ul>
+                            </div>
+                            <div class="gallery-photos">
+                                <img src="주요행사 사진/창립기념일/2023-1차.jpg" alt="2023 1차" onclick="viewImage(this.src)">
+                                <img src="주요행사 사진/창립기념일/2023-2차.jpg" alt="2023 2차" onclick="viewImage(this.src)">
+                                <img src="주요행사 사진/창립기념일/2023-3차.jpg" alt="2023 3차" onclick="viewImage(this.src)">
+                                <img src="주요행사 사진/창립기념일/2023-4차.jpg" alt="2023 4차" onclick="viewImage(this.src)">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -495,10 +492,6 @@
                         <div class="news-item-card">
                             <span class="news-date">5월 31일</span>
                             <div class="news-detail"><i class="fas fa-ring"></i> <strong>Lara</strong> 결혼</div>
-                        </div>
-                        <div class="news-item-card">
-                            <span class="news-date">5월 9일</span>
-                            <div class="news-detail"><i class="fas fa-heart"></i> <strong>Diana</strong> 첫째 임신</div>
                         </div>
                     </div>
                 </div>

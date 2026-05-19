@@ -694,6 +694,7 @@ a {
     }
     .bento-card { min-height: 200px; }
     .poster-grid.half { grid-template-columns: 1fr; }
+    .pdf-embed-area { height: 300px; }
 }
 
 /* ==========================================================================
@@ -784,6 +785,7 @@ a {
 /* Custom Select Dropdown */
 .select-wrapper {
     position: relative;
+    z-index: 20;
 }
 
 .select-display {
